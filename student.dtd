@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--welke elementen mogen in <diagram>-->
+<!ELEMENT diagram (studenten , cursussen)>
+<!--<diagram> <studenten>-->
+  <!ELEMENT studenten (student)*>
+  <!--<diagram> <studenten> <student>-->
+    <!ELEMENT student (naam, adres, woonplaats, postcode, telefoon, geboortedatum, gcursussen)>
+    <!--<diagram> <studenten> <student studentnummer="">-->
+    <!ATTLIST student
+      studentnummer CDATA #REQUIRED
+    >
+      <!--<diagram> <studenten> <student> <naam> -->
+      <!ELEMENT naam (#PCDATA)>
+      <!ELEMENT adres (#PCDATA)>
+      <!ELEMENT woonplaats (#PCDATA)>
+      <!ELEMENT postcode (#PCDATA)>
+      <!ELEMENT telefoon (#PCDATA)>
+      <!ELEMENT geboortedatum (#PCDATA)>
+    <!--<diagram> <studenten> <student> <gcursussen>-->
+    <!ELEMENT gcursussen (gcursus)*>
+      <!--<diagram> <studenten> <student> <gcursussen> <gcursus> -->
+      <!ELEMENT gcursus (cijfer)*>
+      <!--verwijzing naar bestaande cursus!-->
+      <!ATTLIST gcursus
+      code IDREF #REQUIRED
+      >
+        <!--<diagram> <studenten> <student> <gcursussen> <gcursus> <cijfer>-->
+        <!ELEMENT cijfer (#PCDATA)>
+
+<!--<diagram> <cursussen>-->
+<!ELEMENT cursussen (cursus)*>
+<!--<diagram> <cursussen> <cursus>-->
+<!ELEMENT cursus (cursusnaam, beschrijving, ec)>
+<!ATTLIST cursus
+      code ID #REQUIRED
+>
+<!ELEMENT cursusnaam (#PCDATA)>
+<!ELEMENT beschrijving (#PCDATA)>
+<!ELEMENT ec (#PCDATA)>
